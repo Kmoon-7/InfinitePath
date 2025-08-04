@@ -12,8 +12,8 @@ A dungeon roguelike game written in C++.
 
 ## Contributors
 
-Sofia Zanelli ([@SofZll](https://github.com/SofZll))  
-Kaori Jiang ([@Kmoon-7](https://github.com/Kmoon-7))
+Sofia Zanelli: [@SofZll](https://github.com/SofZll)  
+Kaori Jiang: [@Kmoon-7](https://github.com/Kmoon-7)
 
 ## Description
 
