@@ -2,16 +2,19 @@
 
 A dungeon roguelike game written in C++.
 
-*Programming team project - University of Bologna (a.y. 2021-2022)*\\
+*Programming team project - University of Bologna (a.y. 2021-2022)*
+
 *The game is in italian*
 
-![alt text](<img/img1.png>)
-![alt text](<img/img2.png>)
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <img src="img/img1.png" alt="Gameplay screenshot 1" width="300" />
+  <img src="img/img2.png" alt="Gameplay screenshot 2" width="300" /> 
+</div>
 
 ## Contributors
 
-Sofia Zanelli: @SofZll (https://github.com/SofZll)\\
-Kaori Jiang: @Kmoon-7 (https://github.com/Kmoon-7)
+[Sofia Zanelli (@SofZll)](https://github.com/SofZll)  
+[Kaori Jiang (@Kmoon-7)](https://github.com/Kmoon-7)
 
 ## Description
 
