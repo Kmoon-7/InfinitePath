@@ -1,7 +1,6 @@
 #include "cattivo_r.hpp"
 
-
-// da chiamare prima di cammino e salva la posizione del nemico
+// Da chiamare prima di cammino e salva la posizione del nemico
 void cattivo_r::run_after(int n){
         if((direction%2) != 0){
         if(n <= posX)

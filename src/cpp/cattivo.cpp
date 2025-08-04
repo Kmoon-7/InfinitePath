@@ -1,16 +1,12 @@
 #include "cattivo.hpp"
 
-
-//tognie dalla vita il punteggio attacco dato in input
-// e chiama morte se l'int vita è minore o uguale a 0
 void cattivo::decrese_life(int n){
     life -= n;
     if (life <= 0)
          death();
 }
 
-//restituisce true se si è usciti dallo spazio delimitato
-// e false altrimenti
+// Restituisce true se si è usciti dallo spazio delimitato e false altrimenti
 bool cattivo::was_last(){
     bool tmp;
     if((direction%2) != 0){
@@ -33,8 +29,7 @@ void cattivo::walk(){
     }
 }
 
-//controlla che non ci siano ostacoli (se no indietreggia) e
-// di non uscire dallo spazio delimitato (inertedo la direzione di marcia altrimenti)
+// Controlla che non ci siano ostacoli
 void cattivo::movement(){
     delete_immage();
     position_pointer(true);
@@ -51,7 +46,6 @@ void cattivo::movement(){
     print();
 }
 
-//ritorna il punteggio di attacco
 int cattivo::getAttack(){
     return (attack);
 }

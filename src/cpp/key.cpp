@@ -8,7 +8,6 @@ key::key(WINDOW *a, int y, int x){
     printArt();
 };
 
-//stampa la chiave
 void key::printArt(){
     mvwaddch(n, posY, posX, character);
 };

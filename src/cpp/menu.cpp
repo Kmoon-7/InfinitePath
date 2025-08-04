@@ -18,7 +18,7 @@ void menu::startMenu(){
     wrefresh(a);
 };
 
-//stampa la matrice bidimensionale(nome del gioco)
+// Stampa il titolo del gioco
 void menu::printTitle(int title[title_height][title_length]){ 
     for (int i = 0; i < title_height; i++){
         wmove (a, i + 9, 7);
@@ -36,18 +36,20 @@ void menu::printTitle(int title[title_height][title_length]){
     wrefresh(a);
 };
 
-//mostra i comandi e le istruzioni
+// Mostra i comandi e le istruzioni
 void menu::instructions(){
+    for (int i = 0; i < 23; i++){
 
-    for (int i = 0; i < 24; i++){
-
-        mvwprintw(a, i+5, 5, "%s", instructionsText[i]);
+        mvwprintw(a, i+6, 5, "%s", instructionsText[i]);
         wrefresh(a);
     }
+
     int c = 0;
+
     while (c != 10){  // torna indietro se viene premuto invio
         c = wgetch(a);
     }
+
     werase(a);
     wrefresh(a);
     box(a,0,0);

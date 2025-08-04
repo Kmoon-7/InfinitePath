@@ -1,13 +1,11 @@
 #include "menuPause.hpp"
 
-//costruttore
 menuPause::menuPause(WINDOW *x){
     a = x;
     posX = 45;
     posY = 17;
 };
 
-//costruisce il menu
 void menuPause::startMenu(){
     werase(a);
     wrefresh(a);
@@ -20,7 +18,6 @@ void menuPause::startMenu(){
     wrefresh(a);
 };
 
-//funzione per la selezione delle options
 void menuPause::choise(const char *options[], int posY, int posX){
     int choise = 0;
     int v = 0;
@@ -35,12 +32,12 @@ void menuPause::choise(const char *options[], int posY, int posX){
         choise = wgetch(a);
 
         switch(choise){
-            case 119:
+            case KEY_UP:
                 v--;
                 if (v == -1)
                     v = 2;
                 break;
-            case 115:
+            case KEY_DOWN:
                 v++;
                 if (v == 3)
                     v = 0;
@@ -52,7 +49,6 @@ void menuPause::choise(const char *options[], int posY, int posX){
     result = v;
 };
 
-//restituisce il risultato
 int menuPause::getResult(){
     return(result);
 };

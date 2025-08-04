@@ -1,6 +1,5 @@
 #include "funzioni.hpp"
 
-//fino a che il giocatore non vuole terminare il gioco lo fa ripartire
 void funzioni::play(){
     
     srand(time (0));
@@ -9,7 +8,7 @@ void funzioni::play(){
     wins->inizializeWindows();
     wins->printMap();
 
-    while(check_end){
+    while(check_end){ // loop principale del gioco
         start_game();
     }
 }
@@ -59,7 +58,7 @@ void funzioni::start_game(){
     check_game = true;
 }
 
-//estrae e inserisce nella lista tutti i valori negessari per creare una stanza
+// Estrae e inserisce nella lista tutti i valori necessari per creare una stanza
 void funzioni::new_room(){
 
     p_level tmp = new level;
@@ -81,7 +80,7 @@ void funzioni::new_room(){
     list_levels = tmp;
 }
 
-//inizializza e stampa una nuova mappa
+// Inizializza e stampa una nuova mappa
 void funzioni::inizialize_map(){
 
     if(list_levels->room == 0){
@@ -108,7 +107,6 @@ void funzioni::inizialize_map(){
         avatar->getArrowFast();
 }
 
-//crea l'artefatto e la chiave se le bool kay e artifact sono true
 void funzioni::inizialize_key_art(){
 
     if(list_levels->key_b){
@@ -140,8 +138,7 @@ void funzioni::inizialize_key_art(){
     }
 }
 
-//estrae dalla mappa i valori di ogni cattivo e chiama la funzione push
-//passandogli anche che tipologia di cattivo è
+// Estrae dalla mappa i valori di ogni cattivo e chiama la funzione push
 void funzioni::inizialize_enemy(){
     p_l_enemy tmp;
     
@@ -171,7 +168,6 @@ void funzioni::inizialize_enemy(){
     }
 }
 
-//inizializza il protagonista
 void funzioni::inizialize_mainC(){
 
     if(list_levels->room == 0){
@@ -186,35 +182,26 @@ void funzioni::inizialize_mainC(){
         avatar = map_three->getMain();
     }
     
-    if(!list_levels->key_b)
-        avatar->OpenDoor();
+    if(!list_levels->key_b) avatar->OpenDoor();
 
-    if(list_levels->prev == NULL)
-        avatar->is_first_room();
-
+    if(list_levels->prev == NULL) avatar->is_first_room();
 }
 
-//fa avanzare i personaggi e le frecce
 void funzioni::walk(){
-
     p_l_enemy tmp = list_enemy;
 
     while(tmp != NULL){
         int i = tmp->kind;
 
-        if(i == 0)
-            ((cattivo *)(tmp->data))->walk();
+        if(i == 0) ((cattivo *)(tmp->data))->walk();
         else if(i == 1){
-            
-            if(((cattivo_r *)(tmp->data))->getDirezionection()%2 == 0)
-                ((cattivo_r *)(tmp->data))->run_after(avatar->getY());
+            if(((cattivo_r *)(tmp->data))->getDirezionection()%2 == 0) ((cattivo_r *)(tmp->data))->run_after(avatar->getY());
             else ((cattivo_r *)(tmp->data))->run_after(avatar->getX());
         }
         else if(i == 2 || i == 3){
             ((cattivo_f *)(tmp->data))->arrow_walk();
 
-            if(((cattivo_f *)(tmp->data))->getDirezionection()%2 == 0)
-                ((cattivo_f *)(tmp->data))->run_after(avatar->getY());
+            if(((cattivo_f *)(tmp->data))->getDirezionection()%2 == 0) ((cattivo_f *)(tmp->data))->run_after(avatar->getY());
             else ((cattivo_f *)(tmp->data))->run_after(avatar->getX());
         }
 
@@ -224,7 +211,6 @@ void funzioni::walk(){
     avatar->arrow_walk();
 }
 
-//spara le frecce dei nemici
 void funzioni::shoot(){
     p_l_enemy tmp_l = list_enemy;
 
@@ -236,14 +222,12 @@ void funzioni::shoot(){
     }
 }
 
-//decrementa le vite dei personaggi
 void funzioni::check_life(){
     check_enemy();
 
     check_M_caracter();
 }
 
-//decrementa la vita dei cattivi
 void funzioni::check_enemy(){
     int i;
     bool check;
@@ -290,7 +274,7 @@ void funzioni::check_enemy(){
     }
 }
 
-//controlla che le frecce dei nemici abbiano colpito il protagonista
+// Controlla che le frecce dei nemici abbiano colpito il protagonista
 void funzioni::check_arrow_enemy(cattivo_f *p){
     list_arrow *tmp = p->getList();
     list_arrow *tmp_s = NULL;
@@ -316,7 +300,7 @@ void funzioni::check_arrow_enemy(cattivo_f *p){
     }
 }
 
-//controlla che il personaggio non sia stato colpito
+// Controlla che il personaggio non sia stato colpito
 void funzioni::check_M_caracter(){
     chtype tmp_c;
     bool out = false;
@@ -359,7 +343,7 @@ void funzioni::check_M_caracter(){
     check_arrow_main();
 }
 
-//controlla se le frecce del personaggio hanno colpito qulcosa
+// Controlla se le frecce del personaggio hanno colpito qulcosa
 void funzioni::check_arrow_main(){
     list_arrow *l = avatar->getList();
     list_arrow *tmp = NULL;
@@ -387,7 +371,7 @@ void funzioni::check_arrow_main(){
     }
 }
 
-//decrementa la vita ai cattivi e aggiunge punti al tabellone
+// Decrementa la vita ai cattivi e aggiunge punti al tabellone
 void funzioni::been_hit(int i, int y, int x){
     p_l_enemy tmp = list_enemy;
     p_l_enemy final = NULL;
@@ -411,7 +395,7 @@ void funzioni::been_hit(int i, int y, int x){
     wins->addPoints(avatar->getAttack());
 }
 
-//trova il nemico più vicino alla freccia sparata
+// Trova il nemico più vicino alla freccia sparata
 p_l_enemy funzioni::closer(p_l_enemy a, p_l_enemy b, int y, int x){
     p_l_enemy tmp = NULL;
     int valA = 0;
@@ -437,28 +421,18 @@ p_l_enemy funzioni::closer(p_l_enemy a, p_l_enemy b, int y, int x){
     return (tmp);
 }
 
-//prende la chiave e attiva la porta
+// Elimina la chiave dalla mappa e attiva la porta
 void funzioni::f_key(){
-    
-    if(list_levels->room == 0){
-        Key = map_one->delete_key();
-    }
-    else if(list_levels->room  == 1){
-        Key = map_two->delete_key();
-    }
-    else {
-        Key = map_three->delete_key();
-    }
+    if(list_levels->room == 0) Key = map_one->delete_key();
+    else if(list_levels->room  == 1) Key = map_two->delete_key();
+    else Key = map_three->delete_key();
 }
 
-//estrae e attiva il potere
 void funzioni::getAbility(){
     int tmp, i;
 
-    if(list_levels->room == 0)
-        tmp = map_one->ArtGenerator();
-    else if(list_levels->room  == 1)
-        tmp = map_two->ArtGenerator();
+    if(list_levels->room == 0) tmp = map_one->ArtGenerator();
+    else if(list_levels->room  == 1)tmp = map_two->ArtGenerator();
     else tmp = map_three->ArtGenerator();
 
     if(tmp == 0){
@@ -483,17 +457,13 @@ void funzioni::getAbility(){
     ability = ability + tmp;
 }
 
-//prende l'artefatto
 void funzioni::f_artifact(){
 
-    if(list_levels->room == 0)
-        artifact = map_one->delete_Art();
-    else if(list_levels->room  == 1)
-        artifact = map_two->delete_Art();
+    if(list_levels->room == 0) artifact = map_one->delete_Art();
+    else if(list_levels->room  == 1) artifact = map_two->delete_Art();
     else artifact = map_three->delete_Art();
 }
 
-//si sposta in una stanza precedente o successiva
 void funzioni::move_door(bool prev){
     save_datas();
 
@@ -520,13 +490,11 @@ void funzioni::move_door(bool prev){
 
 }
 
-//salva i dati
+// Salva i dati
 void funzioni::save_datas(){
-    if (list_levels ->key_b)
-        f_key();
+    if (list_levels ->key_b) f_key();
 
-    if (list_levels->artifact)
-        f_artifact();
+    if (list_levels->artifact) f_artifact();
 
     life_main = avatar->getLife();
     posX = avatar->getX();
@@ -572,13 +540,12 @@ void funzioni::save_datas(){
     } 
 }
 
-//estrae a sorte un numero da 0 a max-1
 int funzioni::extract_random(int max){
     int tmp = rand() % max;
     return (tmp);
 }
 
-//riavvia o termina il gioco perchè il personaggio è morto
+// Chiude il gioco e resetta i valori
 void funzioni::End(){
     menuEnd *menuE = new menuEnd(W);
     int tmp = 1;
@@ -612,7 +579,6 @@ void funzioni::End(){
     delete menuE;
 }
 
-//avvia il menu di inizio
 void funzioni::menuStart(){
     menu *tmp_M = new menu(W);
 
@@ -636,7 +602,6 @@ void funzioni::menuStart(){
     delete tmp_M;
 }
 
-//menu pausa
 void funzioni::time_out(){
     save_datas();
     int tmp;

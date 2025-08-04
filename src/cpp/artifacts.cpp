@@ -8,7 +8,7 @@ artifacts::artifacts(WINDOW * a, int y, int x,int p): key (a, y, x){
     mvwaddch(n, posY, posX, character);
 };
 
-//genera un numero randomico per assegnare la tipologia di artefatto
+// Genera un numero randomico la tipologia di artefatto
 int artifacts::generateArt(){
     int n = rand() % number;
     return n;

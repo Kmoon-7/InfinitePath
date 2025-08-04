@@ -1,6 +1,6 @@
 #include "cattivo_f.hpp"
 
-//elimina una freccia dalla lista
+// Elimina una freccia dalla lista
 void cattivo_f::pop(list_arrow *p){
     list_arrow *tmp = l_arrow;
     list_arrow *tmp_s = NULL;
@@ -26,7 +26,7 @@ void cattivo_f::pop(list_arrow *p){
     }
 }
 
-//da una direzione alla freccia e spara
+// Assegna una direzione alla freccia e spara
 void cattivo_f::shoot(int y, int x){
     if(!dead){
         if((direction%2) != 0){
@@ -54,7 +54,7 @@ void cattivo_f::shoot(int y, int x){
     }
 }
 
-//funzione da usare per sparare
+// Funzione da usare per sparare
 void cattivo_f::inizialize_arrow(double f, bool g){
     cl_arrow = check_time(cl_arrow,f);
     if(check){
@@ -91,12 +91,10 @@ void cattivo_f::inizialize_arrow(double f, bool g){
     }
 }
 
-//restituisce la lista di frecce
 list_arrow *cattivo_f::getList(){
     return (l_arrow);
 }
 
-//fa avanzare tutte le frecce
 void cattivo_f::arrow_walk(){
     list_arrow *tmp = l_arrow;
 
@@ -106,20 +104,17 @@ void cattivo_f::arrow_walk(){
     }
 }
 
-//velocizza lo sparo
 void cattivo_f::getArrowFast(){
     frequence_arrow = 1.5;
     got = true;
 }
 
-//fa diventare più veloce la freccia
 void cattivo_f::getFast(){
-    frequence_walk = 0.4; //velocità camminata F
+    frequence_walk = 0.4;
     carattere = 'F';
     print();
 }
 
-//cancella tutte le frecce
 void cattivo_f::deleteArrows(){
     list_arrow *tmp = l_arrow;
     while(tmp != NULL){

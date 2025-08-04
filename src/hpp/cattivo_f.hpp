@@ -24,8 +24,9 @@ class cattivo_f: public cattivo_r{
             got = false;
             carattere = 'f';
             print();
-        }; // inizializzare con la Y e la X iniziale, la direzione del personaggio (0 = su, 1 = dx, 2 = giù, 3 = sx) e il valore minimo e massimo delle X o Y
-           // (a seconda della direzione data) del percorso del nemico
+        };
+        // inizializzare con la Y e la X iniziale, la direzione del personaggio (0 = su, 1 = dx, 2 = giù, 3 = sx) e il valore minimo e massimo delle X o Y
+        // (a seconda della direzione data) del percorso del nemico
 
         void pop(list_arrow *p); //call- elimina dalla lista di frecce la freccia data in input come puntatore all'elemento della lista (non alla freccia)
         void shoot(int y, int x);//call- prende la x e la y del personaggio e sceglie la direzione della freccia poi spara

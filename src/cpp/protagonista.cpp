@@ -1,6 +1,5 @@
 #include "protagonista.hpp"
 
-//incrementa l'int vita del valore dato in input
 void protagonista::add_life(int n) {
     life += n;
     if(life > life_Max)
@@ -25,7 +24,6 @@ void protagonista::walk(){
     }
 }
 
-//prende in input i valori dalla tastiera e chiama le funzioni
 void protagonista::getk(){
     int n = wgetch(Window);
 
@@ -65,9 +63,6 @@ void protagonista::getk(){
         quit = true;
 }
 
-
-//se il personaggio si trova sulla porta 
-//ed è aperta passa ala stanza successiva
 void protagonista::move_next_room(){
     if(door_open){
         for(int i = 0; i < 6; i++){
@@ -78,13 +73,10 @@ void protagonista::move_next_room(){
     }
 }
 
-//mette la bool first room true
 void protagonista::is_first_room(){
     first_room = true;
 }
 
-//se il personaggio si trova sulla porta 
-//ed esiste passa ala stanza successiva
 bool protagonista::move_prev_room(){
     bool tmp = true;
 
@@ -102,29 +94,22 @@ bool protagonista::move_prev_room(){
     return (tmp);
 }
 
-//ritorna la bool next_room
 bool protagonista::getNext(){
     return (next_room);
 }
 
-//ritorna la bool quit
 bool protagonista::getQuit(){
     return (quit);
 }
 
-//ritorna la bool prec_room
 bool protagonista::getPrev(){
     return (prev_room);
 }
 
-//restituisce l'int vita
 int protagonista::getLife(){
     return (life);
 }
 
-//restituisce true se le conzioni per spostarsi sono
-//rispettate e false altrimenti
-//controlla se ha colpito il protagonista
 bool protagonista::is_move_okay(){
     bool tmp;
     chtype testch;
@@ -142,7 +127,6 @@ bool protagonista::is_move_okay(){
     return (tmp);
 }
 
-//controlla da chi è stato colpito
 void protagonista::check_hit_by(chtype c){
     if(c == 'C')
         door_open = true;
@@ -152,17 +136,14 @@ void protagonista::check_hit_by(chtype c){
     freccia::check_hit_by(c);
 }
 
-//restituisce la bool Artefatto
 bool protagonista::getArtifact(){
     return (Artifact);
 }
 
-//restituisce la bool door_open
 bool protagonista::getOpen(){
     return (door_open);
 }
 
-//fa diventare più veloce il personaggio
 void protagonista::getFast(){
     frequence_walk = 0.05;
 }
@@ -172,7 +153,6 @@ void protagonista::getArrowFast(){
     got = true;
 }
 
-//restituisce la bool first_room
 bool protagonista::getFirst_room(){
     return (first_room);
 }
