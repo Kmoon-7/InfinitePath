@@ -2,8 +2,8 @@
 
 A dungeon roguelike game written in C++.
 
-![alt text](<Schermata del 2025-08-05 00-36-37.png>)
-![alt text](<Schermata del 2025-08-05 00-36-58.png>)
+![alt text](<img/img1.png>)
+![alt text](<img/img2.png>)
 
 *Programming team project - University of Bologna (a.y. 2021-2022)*
 *The game is in italian*
