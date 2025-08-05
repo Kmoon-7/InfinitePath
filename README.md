@@ -1,8 +1,8 @@
 # InfinitePath
 
-A dungeon roguelike game written in C++.
-
 *Programming team project - University of Bologna (a.y. 2021-2022)*  
+
+A dungeon roguelike game written in C++.
 
 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
   <img src="img/img1.png" alt="Gameplay screenshot 1" width="350" />
