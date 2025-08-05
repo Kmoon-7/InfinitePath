@@ -1,6 +1,6 @@
 # InfinitePath
 
-*Programming team project - University of Bologna (a.y. 2021-2022)*  
+*Programming team project - University of Bologna (a.y. 2021-22)*  
 
 A dungeon roguelike game written in C++.
 
