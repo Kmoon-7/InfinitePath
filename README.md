@@ -16,7 +16,7 @@ Kaori Jiang: [@Kmoon-7](https://github.com/Kmoon-7)
 
 ## Description
 
-InfinitePath is a roguelike adventure game where the player must navigate various rooms, collect items, fight enemies, and survive as long as possible. The maps are infinitely randomized and it is possible to go back to the previous rooms and find the stuffs that were left behind.
+InfinitePath is a roguelike adventure game where the player must navigate various rooms, collect items, fight enemies, and survive as long as possible. The maps are infinitely generated and it is possible to return to previous rooms to reclaim lost items.
 
 The objective is to kill enemies and accumulate as much points as possible. The game ends when the character's health points reaches zero.
 
